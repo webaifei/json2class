@@ -1,19 +1,42 @@
 .App {
   min-height: 100vh;
-  background-color: #282c34;
+  background-color: #0d1b48;
 }
 .App-header {
-  padding: 100px 0 40px;
-  font-size: 24px;
+  padding: 40px 0 40px;
+  font-size: 30px;
   color: white;
+  text-align: center;
 }
 .content {
   display: flex;
   align-items: justify-content-between;
 }
-.input {
-  width: 400px;
-  height: 40px;
+
+
+.form-control {
+    font-size: 1rem;
+    border-radius: 4px;
+    box-shadow: none;
+    margin: 0 auto 10px;
+
+}
+.form-control:active {
+  background-color: #B7C3D2;
+}
+
+.form-control {
+    display: block;
+    width: 400px;
+    height: 40px;
+    padding: 0 10px;
+    line-height: 1.5;
+    color: #424767;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #edf0f7;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease-in-out;
 }
 .textarea {
   width: 100%;
@@ -21,7 +44,7 @@
   display: block;
 }
 .right, .left {
-  flex: 1;
+  flex: 1 1 auto;
 }
 .right {
   background-color: #fff;

@@ -4,8 +4,10 @@ import Handlebars from 'handlebars';
 import AceEditor from "react-ace";
 import './App.css';
 import { is, TYPES, isTimestamp, capitalize } from './utils';
-import "ace-builds/src-noconflict/mode-java";
-import "ace-builds/src-noconflict/theme-github";
+import "ace-builds/src-noconflict/mode-json";
+import "ace-builds/src-noconflict/mode-javascript";
+import "ace-builds/src-noconflict/theme-solarized_dark";
+import "ace-builds/src-noconflict/theme-solarized_light";
 
 function App() {
   const [code, setCode] = useState('');
@@ -96,24 +98,22 @@ function App() {
   }, [jsonStr, template, modelName, formatJSONAndGetComputed]);
   return (
     <div className="App">
-      <header className="App-header">
-        generate class from json.
-      </header>
+      <p className="App-header">
+      Generate Mobx Model class with JSON.
+      </p>
       <p>{error.message}</p>
+      <input
+        className="form-control" type="text" value={modelName} placeholder="input your model name e.g TestModel" onChange={(e)=> {
+            setModelName(e.target.value);
+      }}/>
       <div className="content">
         <div className="left">
-          <input className="input" type="text" value={modelName} placeholder="input your model name e.g TestModel" onChange={(e)=> {
-            setModelName(e.target.value);
-          }}/>
-          <textarea className="textarea" value={jsonStr}  placeholder="input json" onChange={(e)=> {
-            setJsonStr(e.target.value);
-          }}>
-          </textarea>
           <AceEditor
-            mode="java"
-            theme="github"
-            onChange={(e)=> {
-              setJsonStr(e.target.value);
+            width="100%"
+            mode="json"
+            theme="solarized_dark"
+            onChange={(newValue)=> {
+              setJsonStr(newValue);
             }}
             name="UNIQUE_ID_OF_DIV"
             editorProps={{ $blockScrolling: true }}
@@ -121,8 +121,10 @@ function App() {
         </div>
         <div className="right">
           <AceEditor
-            mode="java"
-            theme="github"
+            width="100%"
+            mode="javascript"
+            value={code}
+            theme="solarized_light"
             name="UNIQUE_ID_OF_DIV_2"
             editorProps={{ $blockScrolling: true }}
           />
